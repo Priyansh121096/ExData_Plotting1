@@ -1,10 +1,10 @@
-source("getData.R")
+source("utils.R")
 
-plot1 = function() {
+plot1 = function(savetofile = TRUE, setpar = TRUE) {
     data = get_data()
+    if (setpar) par(mfcol = c(1, 1))
     hist(data$Global_active_power, col = "red", main = "Global Active Power", xlab = "Global Active Power (kilowatts)")
-    dev.copy(png, file = "plot1.png")
-    dev.off()
+    if (savetofile == TRUE) plot_to_png("plot1.png")
 }
 
 plot1()
